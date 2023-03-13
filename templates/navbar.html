@@ -6,4 +6,10 @@
     <input type="text" name="q" placeholder="Rechercher un sujet"/>
 </form>
 
+{% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}">Déconnexion</a>
+{% else %}
+    <a href="{% url 'login' %}">Connexion</a>
+{% endif %}
+
 <hr>
