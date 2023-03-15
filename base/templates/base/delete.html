@@ -5,7 +5,7 @@
 <form method="POST" action="">
     {% csrf_token %}
     {{form.as_p}}
-    <p>Souhaitez-vous supprimer le salon "{{ obj }} ?"</p>
+    <p>Souhaitez-vous supprimer "{{ obj }} ?"</p>
     <a href="{{ request.META.HTTP_REFERER }}">Annuler</a>
     <input type="submit" value="Oui" />
 </form>
