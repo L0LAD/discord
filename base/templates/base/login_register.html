@@ -2,18 +2,40 @@
 
 {% block content %}
 
-<div>
-    <form method="POST" action="">
-        {% csrf_token %}
+{% if page == 'login' %}
 
-        <label>Nom d'utilisateur :</label>
-        <input type="text" name="username" />
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
 
-        <label>Mot de passe :</label>
-        <input type="text" name="password" />
+            <label>Nom d'utilisateur :</label>
+            <input type="text" name="username" />
 
-        <input type="submit" value="Login" />
-    </form>
-</div>
+            <label>Mot de passe :</label>
+            <input type="text" name="password" />
+
+            <input type="submit" value="Login" />
+        </form>
+
+        <p>Pas encore inscrit ?</p>
+        <a href="{% url 'register' %}">Créer un compte</a>
+    </div>
+
+{% else %}
+
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <input type="submit" value="Register" />
+        </form>
+
+        <p>Déjà inscrit ?</p>
+        <a href="{% url 'login' %}">Créer un compte</a>
+    </div>
+
+{% endif %}
 
 {% endblock content %}
