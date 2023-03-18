@@ -71,13 +71,4 @@
       </div>
     </header>
 
-
-
-{% if request.user.is_authenticated %}
-    <p>Hello {{ request.user }} !</p>
-    <a href="{% url 'logout' %}">Déconnexion</a>
-{% else %}
-    <a href="{% url 'login' %}">Connexion</a>
-{% endif %}
-
 <hr>

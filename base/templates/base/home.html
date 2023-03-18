@@ -11,7 +11,7 @@
       <!-- Room List Start -->
       <div class="roomList">
         <div class="mobile-menu">
-          <form class="header__search">
+          <form class="header__search" action="{% url 'home' %}">
             <label>
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                 <title>search</title>
@@ -23,8 +23,8 @@
             </label>
           </form>
           <div class="mobile-menuItems">
-            <a class="btn btn--main btn--pill" href="#">Parcourir les sujets</a>
-            <a class="btn btn--main btn--pill" href="#">Activité recente</a>
+            <a class="btn btn--main btn--pill" href="{% url 'topics' %}">Parcourir les sujets</a>
+            <a class="btn btn--main btn--pill" href="{% url 'activity' %}">Activité recente</a>
           </div>
         </div>
         <div class="roomList__header">
