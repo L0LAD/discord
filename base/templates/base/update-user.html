@@ -1,7 +1,8 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <main class="delete-item layout">
+
+    <main class="update-account layout">
         <div class="container">
             <div class="layout__box">
                 <div class="layout__boxHeader">
@@ -15,23 +16,29 @@
                                 </path>
                             </svg>
                         </a>
-                        <h3>Annuler</h3>
+                        <h3>Modifier votre profil</h3>
                     </div>
                 </div>
                 <div class="layout__body">
-                    <form method="POST" action="">
+                    <form class="form" action="#" method="POST">
                         {% csrf_token %}
-                        <div class="form__group">
-                            <p>Souhaitez-vous supprimer "{{ obj }}" ?</p>
-                        </div>
 
-                        <div class="for__group">
-                            <input class="btn btn--main" type="submit" value="Confirmer" />
-                        </div>
+                        {% for field in form %}
+                            <div class="form__group">
+                                <label for="profile_pic">{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                        {% endfor %}
 
+                        <div class="form__action">
+                            <a class="btn btn--dark" href="{% url 'user-profile' request.user.id %}">Annuler</a>
+                            <button class="btn btn--main" type="submit">Valider</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
+      </div>
     </main>
+
 {% endblock %}
