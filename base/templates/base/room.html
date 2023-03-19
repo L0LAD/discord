@@ -119,10 +119,10 @@
             </div>
           </div>
           <div class="room__message">
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
               {% csrf_token %}
               <input name="body" placeholder="Ecrivez votre message..." />
-              <input type="file" name="img" accept="image/*">
+              <input type="file" name="img" accept="image/*" multiple>
             </form>
           </div>
         </div>

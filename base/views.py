@@ -76,17 +76,19 @@ def room(request, pk):
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all()
     participants = room.participants.all()
-
     if request.method == 'POST':
-        img = ImageModel.objects.create(
-            image = request.POST.get('img')
-        )
+        messages_images = []
+        for uploaded in request.FILES.getlist('img'):
+            img = ImageModel.objects.create(
+                image=uploaded
+            )
+            messages_images.append(img)
         message = Message.objects.create(
-            user = request.user,
-            room = room,
-            body = request.POST.get('body')
+            user=request.user,
+            room=room,
+            body=request.POST.get('body')
         )
-        message.images.add(img)
+        message.images.set(messages_images)
         room.participants.add(request.user)
         return redirect('room', pk=room.id)
 
