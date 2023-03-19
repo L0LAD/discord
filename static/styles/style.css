@@ -1059,6 +1059,16 @@ a {
   height: 54%;
 }
 
+.room__conversation_message__images {
+
+}
+
+.room__conversation_message__images img {
+    height: 50px;
+    width: auto;
+    margin: 0.5rem;
+}
+
 .threads h3 {
   text-transform: uppercase;
   font-weight: 500;
@@ -1076,9 +1086,9 @@ a {
 
 .thread {
   border-left: 2px solid var(--color-dark);
+  padding-top: 2rem;
   padding-left: 1rem;
-  margin: 2rem 0;
-  padding: 2rem;
+  margin: 1rem 0;
 }
 
 .thread__top {

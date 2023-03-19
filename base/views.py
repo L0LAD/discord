@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
 
-from .models import Room, Topic, Message, User
+from .models import Room, Topic, Message, User, ImageModel
 from .forms import RoomForm, UserForm, MyUserCreationForm
 
 # Create your views here.
@@ -37,7 +37,7 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('home')
+    return redirect('login')
 
 @csrf_protect
 def registerPage(request):
@@ -78,11 +78,15 @@ def room(request, pk):
     participants = room.participants.all()
 
     if request.method == 'POST':
+        img = ImageModel.objects.create(
+            image = request.POST.get('img')
+        )
         message = Message.objects.create(
             user = request.user,
             room = room,
             body = request.POST.get('body')
         )
+        message.images.add(img)
         room.participants.add(request.user)
         return redirect('room', pk=room.id)
 
