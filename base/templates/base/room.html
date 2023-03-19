@@ -110,7 +110,9 @@
                   </div>
                   <div class="room__conversation_message__images">
                     {% for img in message.images.all %}
-                      <img src="{{ img.image.url }}" />
+                      <a href="{{ img.image.url }}" target="_blank">
+                        <img src="{{ img.image.url }}" />
+                      </a>
                     {% endfor %}
                   </div>
                 </div>

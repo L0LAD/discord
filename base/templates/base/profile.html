@@ -26,17 +26,14 @@
         <div class="profile__about">
           <h3>A propos</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur illo tenetur
-            facilis sunt nemo debitis quisquam hic atque aut? Ducimus alias placeat optio
-            accusamus repudiandae quis ab ex exercitationem rem?
+            {{ user.bio }}
           </p>
         </div>
       </div>
 
       <div class="roomList__header">
         <div>
-          <h2>Salons</a>
-          </h2>
+          <h2>Salons</h2>
         </div>
       </div>
       {% include 'base/feed_component.html' %}
